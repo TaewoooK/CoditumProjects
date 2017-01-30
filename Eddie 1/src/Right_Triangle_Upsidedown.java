@@ -8,7 +8,7 @@ public class Right_Triangle_Upsidedown {
 		 * "Difference between rt triangle and backward rt triangle."
 		 * in the for loop, e=x in backward. e=0 in regular.
 		 * e>0 in backward rt triangle, e<x in regular rt triangle
-		 * e-- in backward rt triangle, e++ in regular rt triangle
+		 * e-- in backward rt triangle, e++ in regular rt triangle.
 		 *For the next "for loop" i<e in backward rt triangle, i<e+1 in regular rt triangle
 		*/
 		
