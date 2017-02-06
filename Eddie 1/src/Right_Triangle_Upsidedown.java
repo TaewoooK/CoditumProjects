@@ -12,7 +12,7 @@ public class Right_Triangle_Upsidedown {
 		 *For the next "for loop" i<e in backward rt triangle, i<e+1 in regular rt triangle
 		*/
 		
-		// Tells the user to type in a number and sets variable x as the height of the R
+		// Tells the user to type in a number and sets variable x as the height of the Right Triangle
 
 		Scanner user=new Scanner (System.in);
 		System.out.println("Please type the measurement of the height of a Right Triangle.");
@@ -20,15 +20,34 @@ public class Right_Triangle_Upsidedown {
 
 
 		//height
-		for(int e=x;e>0;e--){
+		for(int e=x;e>0;e--)
+		{
 
 			//variable "e" is the width of the right triangle
-			for(int i=0;i<e;i++){
-				System.out.print("* ");	
+			for(int i=0;i<e;i++)
+			{
+				System.out.print("  ");	
 			}
-			System.out.println("");		
+			System.out.print("* ");		
 
-
+		//From other triangle
+			for(int i=0;i<x-e;i++)
+			{
+				System.out.print("a ");	
+			}
+			
+			//other triangle
+			
+			
+			
+			
+			System.out.println(" ");
+			
+			
+			
+		
+			
+		
 		}
 
 	}
