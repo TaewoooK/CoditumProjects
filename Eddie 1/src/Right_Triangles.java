@@ -7,7 +7,7 @@ public class Right_Triangles {
 		// Tells the user to type in a number and sets variable x as the height of the R
 
 		Scanner user=new Scanner (System.in);
-		System.out.println("Please type the measurement of the height of a Right Triangle.");
+		System.out.println("Please type the measurement of half the height of a Right Triangle.");
 		int x=user.nextInt();
 
 

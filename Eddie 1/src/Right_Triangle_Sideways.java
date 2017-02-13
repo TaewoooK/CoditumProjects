@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Right_Triangle_Upsidedown {
+public class Right_Triangle_Sideways {
 
 	public static void main(String[] args) {
 
@@ -26,14 +26,14 @@ public class Right_Triangle_Upsidedown {
 			//variable "e" is the width of the right triangle
 			for(int i=0;i<e;i++)
 			{
-				System.out.print("  ");	
+				System.out.print("c ");	
 			}
-			System.out.print("* ");		
+			System.out.print("c ");		
 
 		//From other triangle
 			for(int i=0;i<x-e;i++)
 			{
-				System.out.print("a ");	
+				System.out.print(" ");	
 			}
 			
 			//other triangle
