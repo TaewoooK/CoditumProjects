@@ -14,13 +14,13 @@ public class Shopping {
 
 		String[]cartarray=new String[3];
 		int itemsincart=0;
-		
+
 		boolean go = true;
 		Scanner user=new Scanner (System.in);
 
 		while(go == true)
 		{
-			System.out.println("Type 1 for Store. Type 2 for Cart. Type 3 to Finish");
+			System.out.println("Type 1 for Store. Type 2 for Cart. Type 3 to Check out");
 			int x=user.nextInt();
 			user.nextLine();
 
@@ -31,7 +31,7 @@ public class Shopping {
 					System.out.println(shoparray[e]);	
 				}
 			}
-			if (x==2)
+			if (x==2 && itemsincart<cartarray.length)
 			{
 				for(int e=0;e<5;e++)
 				{
@@ -45,16 +45,23 @@ public class Shopping {
 				{
 					if(y.equals(shoparray[e]))
 					{
-					cartarray[itemsincart]=shoparray[e];
-					itemsincart=itemsincart+1;
-							
-					shoparray[e]="Empty";
-					
-					for(int c=0;c<3;c++)
-					{
-						System.out.println(cartarray[c]);
-					}
-					
+						cartarray[itemsincart]=shoparray[e];
+						itemsincart=itemsincart+1;
+
+						shoparray[e]="Empty";
+
+						if (cartarray.length==itemsincart)
+						{
+							System.out.println("YOUR CART IS FULL. PLEASE CHECK OUT.");	
+
+						}
+
+
+						for(int c=0;c<3;c++)
+						{
+							System.out.println(cartarray[c]);
+						}
+
 					}
 				}
 			}
