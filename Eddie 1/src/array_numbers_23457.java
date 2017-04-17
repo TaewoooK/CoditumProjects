@@ -18,7 +18,7 @@ public class array_numbers_23457 {
 			numberarray[x]=numberarray[x+1];
 		}
 
-		numberarray[4]=7;
+		numberarray[4]=1;
 
 		for(int x=0;x<5;x++)
 		{

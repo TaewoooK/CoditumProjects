@@ -20,7 +20,7 @@ public class array_numbers_71234 {
 			numberarray[x]=numberarray[x-1];	
 		}
 
-		numberarray[0]=7;
+		numberarray[0]=5;
 
 		for(int x=0;x<5;x++)
 		{
