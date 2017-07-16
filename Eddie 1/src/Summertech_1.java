@@ -55,6 +55,8 @@ public class Summertech_1 {
 			System.out.println();
 		}
 		
+		int[] intarray;
+		intarray = new int[6];
 	
 
 	}
