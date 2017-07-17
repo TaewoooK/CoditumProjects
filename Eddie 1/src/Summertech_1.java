@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Summertech_1 {
 
@@ -57,7 +58,23 @@ public class Summertech_1 {
 		
 		int[] intarray;
 		intarray = new int[6];
-	
+		intarray [0]=0;
+		intarray [1]=1;
+		intarray [2]=2;
+		intarray [3]=3;
+		//intarray []
+		intarray[5]=6;
+		
+		intarray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		
+		for(int counter=0;counter<intarray.length;counter++)
+		{
+		System.out.println(intarray[counter]);
+		}
+		
+		Scanner input=new Scanner(System.in);
+		String word = input.nextLine();
+		System.out.println(word);
 
 	}
 	
