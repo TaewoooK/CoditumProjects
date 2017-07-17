@@ -12,10 +12,12 @@ public class Right_Triangles {
 
 
 		//height
-		for(int e=0;e<x;e++){
+		for(int e=0;e<x;e++)
+		{
 
 			//variable "e" is the width of the right triangle
-			for(int i=-1;i<e+1;i++){
+			for(int i=-1;i<e+1;i++)
+			{
 				System.out.print("* ");	
 			}
 			System.out.println(" ");	
