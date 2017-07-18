@@ -36,14 +36,36 @@ public class TicTacToe
 			{	
 				ticTacToeLines();
 				System.out.println("At which slot would you like to put " + turn + "?");
-				do
+				
+				
+				boolean validInput=false;
+				while(validInput==false)
 				{
+					if (input.hasNextInt())
+					{
+						validInput=true;
+						y = input.nextInt();
+					}
+					else
+					{
+						input.next();
+					}
+				} //input mismatch
+				
+				validInput=false;
+				while (validInput==false)
+				{
+					if (input.hasNextInt())
+					{
+						validInput=true;
+						x=input.nextInt();
 					
-				}while(!input.hasNextInt()); //input mismatch
-
-
-				y = input.nextInt();
-				x = input.nextInt();
+					}
+					else
+					{
+						input.next();
+					}
+				}
 				valid = checkForValidMove(y,x);
 			}
 
