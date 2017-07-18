@@ -9,12 +9,15 @@ public class TicTacToe
 
 	public static void main(String[] args) 
 	{
-		for(int i=0;i<chararray.length;i<++)
+		for(int i=0;i<chararray.length;i++)
 		{
-			
+			for (int f=0;f<chararray.length;f++)
+			{
+				chararray[i][f]= Integer.toString(i*chararray[i].length+f).charAt(0);
+			}
 		}
-		
-		
+
+
 		char character = 'x';
 		char circle='o';
 
@@ -22,12 +25,32 @@ public class TicTacToe
 		while ( !(checkForWin()) && !(checkForTie()) )
 		{
 			checkIfOddOrEven(turnNum);
-			ticTacToeLines();
-			
-			
+			System.out.println(turn + "'s turn");
+
+
+			boolean valid = false;
+
+			int y = 0;
+			int x = 0;
+			while(valid==false)
+			{	
+				ticTacToeLines();
+				System.out.println("At which slot would you like to put " + turn + "?");
+				do
+				{
+					
+				}while(!input.hasNextInt()); //input mismatch
+
+
+				y = input.nextInt();
+				x = input.nextInt();
+				valid = checkForValidMove(y,x);
+			}
+
+			chararray[y][x]=turn;
 			turnNum++;
 		}
-		System.out.println("At which slot would you like to put o?");
+
 
 		//i*intarray[i].length+j
 
@@ -71,7 +94,7 @@ public class TicTacToe
 
 	public static boolean checkForTie()
 	{
-		if (turn==9)
+		if (turnNum==9)
 		{
 			System.out.println("IT'S A TIE!");
 			return true;
@@ -84,12 +107,10 @@ public class TicTacToe
 	{
 		if (number%2==1)
 		{
-			System.out.println("X's turn");
 			turn='x';
 		}
 		else
 		{
-			System.out.println("O's turn");
 			turn='o';
 		}
 	}
@@ -101,11 +122,29 @@ public class TicTacToe
 		System.out.println(chararray[1][0] + "|" + chararray[1][1] + "|" + chararray[1][2] );
 		System.out.println("-----" );
 		System.out.println(chararray[2][0] + "|" + chararray[2][1] + "|" + chararray[2][2] );
-		
-		
-		
+
+
+
 	}
 
+	public static boolean checkForValidMove(int y, int x)
+	{
+		if (0<=y && y<=2 && x>=0 && x<=2)
+		{
+
+		}
+		else 
+		{
+			System.out.println("Invalid Move!");
+			return false;
+		}
+		if (chararray[y][x]=='x' || chararray[y][x]=='o')
+		{
+			System.out.println("Invalid Move!");
+			return false;
+		}
+		return true;
+	}
 
 
 
