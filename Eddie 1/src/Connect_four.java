@@ -10,7 +10,7 @@ public class Connect_four {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		
+
 		Scanner input= new Scanner(System.in);
 		while (!(checkIfPlayerHasWon() ) && !(checkIfPlayerHasTied() ) )
 		{
@@ -18,14 +18,14 @@ public class Connect_four {
 			System.out.println(turnString +"'s turn");
 			tableLines();
 			turn++;
-		
+
 			System.out.println("Where, on the x axis, would you like to place your checker piece? 0 - 6 from left to right");
 			int x= input.nextInt();
-		
+
 			playerPiece(x);
 			tableLines(); //fix table lines... press play to see the problem
-		
-		break;
+
+
 		}
 
 
@@ -52,7 +52,28 @@ public class Connect_four {
 
 	public static boolean checkIfPlayerHasWon()
 	{
+		//checks horizontally
+		for (int y=intarray.length-1;y>=0;y--)
+		{
+			for (int x=intarray[y].length-1;x>=3;x--)
+			{
+				if (intarray[y][x] != 0 && intarray[y][x]==intarray[y][x-1] && intarray[y][x-1]==intarray[y][x-2] && intarray[y][x-2]== intarray[y][x-3] )
+				{
+					System.out.println(turnString + " has WON!");
+					return true;
+				}
+			}
+		}
+		
+		for (int y=intarray.length-1;y>=0;y--)
+		{
+			for (int x=intarray[y].length-1;x>=3;x--)//do stuff here
+			{
+				
+			}
+		}
 		return false;
+
 	}
 
 	public static boolean checkIfPlayerHasTied()
@@ -62,16 +83,17 @@ public class Connect_four {
 
 
 
-	public static void playerPiece(int x)
+	public static int playerPiece(int x)
 	{
 		for (int y=5;y>=0;y--)
 		{
 			if (intarray[y][x]== empty )
 			{
-				intarray[y][x]=turn;
+				intarray[y][x]=turn%2+1;
+				return y;
 			}
-
 		}
+		return -1;
 
 	}
 
