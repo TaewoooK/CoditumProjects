@@ -64,12 +64,40 @@ public class Connect_four {
 				}
 			}
 		}
-		
-		for (int y=intarray.length-1;y>=0;y--)
+		// checks for vertical
+		for (int y=intarray.length-1;y>=3;y--)
 		{
-			for (int x=intarray[y].length-1;x>=3;x--)//do stuff here
+			for (int x=intarray[y].length-1;x>=0;x--)
 			{
-				
+				if (intarray[y][x] != 0 && intarray[y][x]==intarray[y-1][x] && intarray[y-1][x]==intarray[y-2][x] && intarray[y-2][x]== intarray[y-3][x] )
+				{
+					System.out.println(turnString + " has WON!");
+					return true;
+				}
+			}
+		}
+		// checks for diagonal -1/1	
+		for (int y=intarray.length-1;y>=3;y--)
+		{
+			for (int x=intarray[y].length-1-3;x>=0;x--)
+			{
+				if (intarray[y][x] != 0 && intarray[y][x]==intarray[y-1][x+1] && intarray[y-1][x+1]==intarray[y-2][x+2] && intarray[y-2][x+2]== intarray[y-3][x+3] )
+				{
+					System.out.println(turnString + " has WON!");
+					return true;
+				}
+			}
+		}
+		//checks for diagonal 1/1
+		for (int y=intarray.length-1-3;y>=0;y--)
+		{
+			for (int x=intarray[y].length-1-3;x>=0;x--)
+			{
+				if (intarray[y][x] != 0 && intarray[y][x]==intarray[y+1][x+1] && intarray[y+1][x+1]==intarray[y+2][x+2] && intarray[y+2][x+2]== intarray[y+3][x+3] )
+				{
+					System.out.println(turnString + " has WON!");
+					return true;
+				}
 			}
 		}
 		return false;
@@ -103,9 +131,12 @@ public class Connect_four {
 		{
 			for (int h=0;h<intarray[v].length;h++)
 			{
+				while (!(intarray[v][h]==0))//work on this table fix
+				{
 				System.out.print(intarray[v][h] + "|");
+				}
 			}
-			System.out.println(" ");
+			System.out.println(" "+"|");
 		}
 	}
 
