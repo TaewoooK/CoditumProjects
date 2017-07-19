@@ -16,14 +16,30 @@ public class Connect_four {
 		{
 			checkIfOddOrEven();
 			System.out.println(turnString +"'s turn");
-			tableLines();
 			turn++;
 
-			System.out.println("Where, on the x axis, would you like to place your checker piece? 0 - 6 from left to right");
-			int x= input.nextInt();
-
+			// Invalid integer
+			int x=0;
+			boolean valid=false;
+			while (valid==false)
+			{
+				tableLines();
+				System.out.println("Where, on the x axis, would you like to place your checker piece? 0 - 6 from left to right");
+				x= input.nextInt();
+				if (x<=6 && x>=0)
+				{
+					valid = true;
+				}
+				else
+				{
+					System.out.println("Invalid Number");
+				}
+			}
+		
+			//Invalid String
+			
+			
 			playerPiece(x);
-			tableLines(); //fix table lines... press play to see the problem
 
 
 		}
@@ -106,6 +122,13 @@ public class Connect_four {
 
 	public static boolean checkIfPlayerHasTied()
 	{
+		if (turn==42)
+		{
+			System.out.println("Tie Game!");
+			return true; 
+		}
+
+
 		return false;
 	}
 
@@ -131,12 +154,16 @@ public class Connect_four {
 		{
 			for (int h=0;h<intarray[v].length;h++)
 			{
-				while (!(intarray[v][h]==0))//work on this table fix
+				if (!(intarray[v][h]==0))
 				{
-				System.out.print(intarray[v][h] + "|");
+					System.out.print(intarray[v][h] + "|");
+				}
+				else
+				{
+					System.out.print(" " + "|");
 				}
 			}
-			System.out.println(" "+"|");
+			System.out.println(" ");
 		}
 	}
 
