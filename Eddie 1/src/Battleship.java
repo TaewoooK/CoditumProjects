@@ -21,6 +21,8 @@ public class Battleship {
 				board(playerOneArray, stringArray);
 				String y = input.next();
 				int x = input.nextInt();
+				
+				
 				playerMissile(y, x, playerOneArray);
 				
 			}
@@ -29,8 +31,11 @@ public class Battleship {
 				System.out.println("Player two's turn!");
 				System.out.println("   1 2 3 4 5 6 7 8 9 10");
 				board(playerTwoArray, stringArray);
-				input.next();
+				String y = input.next();
+				int x = input.nextInt();
 			}
+			
+			
 			turn++;
 		}
 
@@ -49,6 +54,14 @@ public class Battleship {
 				{
 				System.out.print("|" + anything[i][x]);
 				}
+				else if()
+				{
+					//fix this
+				}
+				else if()
+				{
+					
+				}
 				else
 				{
 					
@@ -62,12 +75,26 @@ public class Battleship {
 	
 	public static boolean playerMissile(String y, int x, int[][] playerOneArray)
 	{
-		for (int i=1; i<=10; i++)
+		
+		int	yCoordinate = y.charAt(0)-65;  //abc //a
+		//hit
+		//miss
+		//invalid input
+		
+		
+		if (yCoordinate <0 || yCoordinate >= playerOneArray.length || x >= playerOneArray[yCoordinate].length || x < 0 || playerOneArray[yCoordinate][x]==2 || playerOneArray[yCoordinate][x]==1) //invalid input
 		{
-			y=i; //String convert!!!!
+			return false;
 		}
-		if (playerOneArray[y][x]==0)
+		if (playerOneArray[yCoordinate][x]==0)
 		{
+			playerOneArray[yCoordinate][x]= 1;
+			
+			return true;
+		}
+		else
+		{
+			playerOneArray[yCoordinate][x]= 2;
 			return true;
 		}
 	}
