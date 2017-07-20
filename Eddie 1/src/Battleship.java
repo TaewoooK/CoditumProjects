@@ -14,29 +14,28 @@ public class Battleship {
 		while (!(checkForWin()==true && !(checkForTie()==true) ) )
 		{
 			boolean bool = checkForOddOrEven(turn);
+			int[][] currentArray;
+			String playerTurn;
 			if (bool==true)
 			{
-				System.out.println("Player one's turn!");
-				System.out.println("   1 2 3 4 5 6 7 8 9 10");
-				board(playerOneArray, stringArray);
-				String y = input.next();
-				int x = input.nextInt();
-				
-				
-				playerMissile(y, x, playerOneArray);
-				
+				playerTurn= "one";
+				currentArray=playerOneArray;
 			}
 			else
 			{
-				System.out.println("Player two's turn!");
-				System.out.println("   1 2 3 4 5 6 7 8 9 10");
-				board(playerTwoArray, stringArray);
-				String y = input.next();
-				int x = input.nextInt();
+				playerTurn= "two";
+				currentArray=playerTwoArray;
 			}
 			
-			
-			turn++;
+				System.out.println("Player " + playerTurn + "'s turn!");
+				System.out.println("   1 2 3 4 5 6 7 8 9 10");
+				board(currentArray, stringArray);
+				String y = input.next();
+				int x = input.nextInt();
+				
+				piece(currentArray, input );
+				playerMissile(y, x, playerOneArray);
+				turn++;
 		}
 
 		
@@ -50,22 +49,22 @@ public class Battleship {
 			System.out.print(stringArray[i]);
 			for (int x=0;x<anything[i].length;x++)
 			{
-				if (!(anything[i][x]==0))
+				if (anything[i][x]==0)
 				{
-				System.out.print("|" + anything[i][x]);
+					System.out.print(" " + "|");
 				}
-				else if()
+				else if(anything[i][x] == 2)
 				{
-					//fix this
+					System.out.print("X" + "|");
 				}
-				else if()
+				else if(anything[i][x] == 1)
 				{
-					
+					System.out.print("O" + "|");
 				}
 				else
 				{
+					System.out.print(anything[i][x] + "|"  );
 					
-					System.out.print(" " + "|");
 				}
 			}
 			System.out.println(" |");
@@ -120,6 +119,12 @@ public class Battleship {
 	public static boolean checkForTie()
 	{
 		return false;
+	}
+	
+	public static void piece(int [][]arrayBoard, Scanner input)
+	{
+		String y= input.next();
+		int x= input.next();
 	}
 
 }
