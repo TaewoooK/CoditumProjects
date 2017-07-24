@@ -12,28 +12,56 @@ public class Battleship {
 		Scanner input=new Scanner(System.in);
 		//input.next()
 
-		for (int i=0;i<5;i++)
+
+		boolean valid=false;
+
+		//Player One
+		while(valid==false)
 		{
-			boolean valid=false;
-			while(valid==false)
-			{
-				System.out.println("Player one's board setup");
-				board(playerOneArray, stringArray);
-				System.out.println("Where do you want to place your ship?");
-				valid=piece(playerOneArray, input );
-			}
+			System.out.println("Player one's board setup");
+			board(playerOneArray, stringArray);
+			System.out.println("Where do you want to place your Patrol Boat (2 spaces)");
+			valid=twoPiece(playerOneArray, input );
 		}
-		for (int i=0;i<5;i++)
+
+		valid=false;
+		while(valid==false)
 		{
-			boolean valid=false;
-			while(valid==false)
-			{
-				System.out.println("Player two's board setup");
-				board(playerTwoArray, stringArray);
-				System.out.println("Where do you want to place your ship?");
-				valid=piece(playerTwoArray, input );
-			}
+			System.out.println("Player one's board setup");
+			board(playerOneArray, stringArray);
+			System.out.println("Where do you want to place your Destroyer (3 spaces) ");
+			valid=threePiece(playerOneArray, input);
 		}
+
+		valid=false;
+		while(valid==false)
+		{
+			System.out.println("Player one's board setup");
+			board(playerOneArray, stringArray);
+			System.out.println("Where do you want to place your Submarine (3 spaces) ");
+			valid=threePiece(playerOneArray, input);	
+		}
+		valid=false;
+		while(valid==false)
+		{
+			System.out.println("Player one's board setup");
+			board(playerOneArray, stringArray);
+			System.out.println("Where do you want to place your Battleship (4 spaces) ");
+			valid=fourPiece(playerOneArray, input); 
+		}
+		
+		
+		
+		//Player Two
+		valid=false;
+		while(valid==false)
+		{
+			System.out.println("Player two's board setup");
+			board(playerTwoArray, stringArray);
+			System.out.println("Where do you want to place your Patrol Boat (2 spaces) ");
+			valid=twoPiece(playerTwoArray, input );
+		}
+
 
 		while (!(checkForWin()==true && !(checkForTie()==true) ) )
 		{
@@ -148,7 +176,7 @@ public class Battleship {
 		return false;
 	}
 
-	public static boolean piece(int [][]arrayBoard, Scanner input) //Create invalid stuff
+	public static boolean twoPiece(int [][]arrayBoard, Scanner input) 
 	{
 
 		String y=input.next();
@@ -159,24 +187,38 @@ public class Battleship {
 			System.out.println("Invalid");
 			return false;
 		}
-		
+
 		if (x<0 || x>9)
 		{
 			System.out.println("Invalid");
 			return false;
 		}
+
 		System.out.println("In which direction do you want your ship to be placed?");
 		String direction=input.next();
 
 		if (direction.equalsIgnoreCase( "right"))
 		{
-			arrayBoard[yCoordinate][x]=3;
-			arrayBoard[yCoordinate][x+1]=3;
-			return true;
+			if(x==9)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			else
+			{
+				arrayBoard[yCoordinate][x]=3;
+				arrayBoard[yCoordinate][x+1]=3;
+				return true;
+			}
 		}
 
 		else if (direction.equalsIgnoreCase("left"))
 		{
+			if(x==0)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate][x-1]=3;
 			return true;
@@ -184,6 +226,11 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("up"))
 		{
+			if(y=="A" || y=="a")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate - 1][x]=3;
 			return true;
@@ -191,6 +238,11 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("down"))
 		{
+			if(y=="J" || y=="j")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate + 1][x]=3;
 			return true;
@@ -203,5 +255,173 @@ public class Battleship {
 			return false;
 		}
 	}
+
+	public static boolean threePiece(int [][]arrayBoard, Scanner input) 
+	{
+
+		String y=input.next();
+		int x = input.nextInt();
+		int yCoordinate=y.toUpperCase().charAt(0)-65;  
+		if (yCoordinate>9 || yCoordinate<0)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+
+		if (x<0 || x>9)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+
+		System.out.println("In which direction do you want your ship to be placed?");
+		String direction=input.next();
+
+		if (direction.equalsIgnoreCase( "right"))
+		{
+			if(x>7)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			else
+			{
+				arrayBoard[yCoordinate][x]=3;
+				arrayBoard[yCoordinate][x+1]=3;
+				arrayBoard[yCoordinate][x+2]=3;
+				return true;
+			}
+		}
+
+		else if (direction.equalsIgnoreCase("left"))
+		{
+			if(x<2)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate][x-1]=3;
+			arrayBoard[yCoordinate][x+2]=3;
+			return true;
+		}
+
+		else if (direction.equalsIgnoreCase("up"))
+		{
+			if(y=="A" || y=="a" || y=="B" || y=="b")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate - 1][x]=3;
+			arrayBoard[yCoordinate - 2][x]=3;
+			return true;
+		}
+
+		else if (direction.equalsIgnoreCase("down"))
+		{
+			if(y=="J" || y=="j" || y=="I" || y=="i")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate + 1][x]=3;
+			arrayBoard[yCoordinate + 2][x]=3;
+			return true;
+
+		}
+
+		else
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+	}
+	public static boolean fourPiece(int [][]arrayBoard, Scanner input) //create invalid stuff
+	{
+
+		String y=input.next();
+		int x = input.nextInt();
+		int yCoordinate=y.toUpperCase().charAt(0)-65;  
+		if (yCoordinate>9 || yCoordinate<0)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+
+		if (x<0 || x>9)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+
+		System.out.println("In which direction do you want your ship to be placed?");
+		String direction=input.next();
+
+		if (direction.equalsIgnoreCase( "right"))
+		{
+			if(x>7)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			else
+			{
+				arrayBoard[yCoordinate][x]=3;
+				arrayBoard[yCoordinate][x+1]=3;
+				arrayBoard[yCoordinate][x+2]=3;
+				return true;
+			}
+		}
+
+		else if (direction.equalsIgnoreCase("left"))
+		{
+			if(x<2)
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate][x-1]=3;
+			arrayBoard[yCoordinate][x+2]=3;
+			return true;
+		}
+
+		else if (direction.equalsIgnoreCase("up"))
+		{
+			if(y=="A" || y=="a" || y=="B" || y=="b")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate - 1][x]=3;
+			arrayBoard[yCoordinate - 2][x]=3;
+			return true;
+		}
+
+		else if (direction.equalsIgnoreCase("down"))
+		{
+			if(y=="J" || y=="j" || y=="I" || y=="i")
+			{
+				System.out.println("Invalid");
+				return false;
+			}
+			arrayBoard[yCoordinate][x]=3;
+			arrayBoard[yCoordinate + 1][x]=3;
+			arrayBoard[yCoordinate + 2][x]=3;
+			return true;
+
+		}
+
+		else
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+	}
+
 
 }
