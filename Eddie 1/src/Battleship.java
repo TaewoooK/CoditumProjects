@@ -8,30 +8,38 @@ public class Battleship {
 		int[][] playerTwoArray=  new int[10][10];
 		String[] stringArray= new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 		int turn=0;
-		
+
 		Scanner input=new Scanner(System.in);
 		//input.next()
 
 		for (int i=0;i<5;i++)
 		{
-			System.out.println("Player one's board setup");
-			board(playerOneArray, stringArray);
-			System.out.println("Where do you want to place your ship?");
-			piece(playerOneArray, input );
+			boolean valid=false;
+			while(valid==false)
+			{
+				System.out.println("Player one's board setup");
+				board(playerOneArray, stringArray);
+				System.out.println("Where do you want to place your ship?");
+				valid=piece(playerOneArray, input );
+			}
 		}
 		for (int i=0;i<5;i++)
 		{
-			System.out.println("Player two's board setup");
-			board(playerTwoArray, stringArray);
-			System.out.println("Where do you want to place your ship?");
-			piece(playerTwoArray, input );
+			boolean valid=false;
+			while(valid==false)
+			{
+				System.out.println("Player two's board setup");
+				board(playerTwoArray, stringArray);
+				System.out.println("Where do you want to place your ship?");
+				valid=piece(playerTwoArray, input );
+			}
 		}
 
 		while (!(checkForWin()==true && !(checkForTie()==true) ) )
 		{
 			boolean bool = checkForOddOrEven(turn);
 			int[][] currentArray;
-		int[][] enemyBoard;
+			int[][] enemyBoard;
 			String playerTurn;
 			if (bool==true)
 			{
@@ -47,7 +55,7 @@ public class Battleship {
 			}
 
 			System.out.println("Player " + playerTurn + "'s turn!");
-			
+
 			board(currentArray, stringArray);
 			String y = input.next();
 			int x = input.nextInt();
@@ -140,39 +148,60 @@ public class Battleship {
 		return false;
 	}
 
-	public static void piece(int [][]arrayBoard, Scanner input) //Create invalid stuff
+	public static boolean piece(int [][]arrayBoard, Scanner input) //Create invalid stuff
 	{
+
 		String y=input.next();
 		int x = input.nextInt();
-		int yCoordinate=y.charAt(0)-65;  
+		int yCoordinate=y.toUpperCase().charAt(0)-65;  
+		if (yCoordinate>9 || yCoordinate<0)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
+		
+		if (x<0 || x>9)
+		{
+			System.out.println("Invalid");
+			return false;
+		}
 		System.out.println("In which direction do you want your ship to be placed?");
 		String direction=input.next();
 
-		if (direction.equals( "right"))
+		if (direction.equalsIgnoreCase( "right"))
 		{
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate][x+1]=3;
+			return true;
 		}
-		
-		else if (direction.equals("left"))
+
+		else if (direction.equalsIgnoreCase("left"))
 		{
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate][x-1]=3;
+			return true;
 		}
-		
-		else if (direction.equals("up"))
+
+		else if (direction.equalsIgnoreCase("up"))
 		{
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate - 1][x]=3;
+			return true;
 		}
-		
-		else if (direction.equals("down"))
+
+		else if (direction.equalsIgnoreCase("down"))
 		{
 			arrayBoard[yCoordinate][x]=3;
 			arrayBoard[yCoordinate + 1][x]=3;
+			return true;
+
 		}
 
-
+		else
+		{
+			System.out.println("Invalid");
+			return false;
+		}
 	}
 
 }
