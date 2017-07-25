@@ -1,3 +1,5 @@
+//DO SOMETHING TO FIX OVERLAPING SHIPS
+
 import java.util.Scanner;
 public class Battleship {
 
@@ -100,13 +102,19 @@ public class Battleship {
 			String y = input.next();
 			int x = input.nextInt();
 			
-			playerMissile(y, x, enemyBoard);
-			if (playerMissile(y, x, enemyBoard)==false)
+			boolean pm = playerMissile(y, x, enemyBoard);
+			if (pm==false)
 			{
 				System.out.println("Invalid");
+				System.out.println("Player " + playerTurn + "'s turn!");
+
+				board(currentArray, stringArray);
+				System.out.println("Where do you want to fire?");
+				y = input.next();
+				x = input.nextInt();
 				playerMissile(y, x, enemyBoard);
 			}
-			else 
+			else
 			{
 			turn++;
 			}
@@ -147,29 +155,29 @@ public class Battleship {
 
 	}
 
-	public static boolean playerMissile(String y, int x, int[][] playerOneArray)// fix this!!!!!!
+	public static boolean playerMissile(String y, int x, int[][] playerOneArray)
 	{
 
-		int	yCoordinate = y.charAt(0)-65;  //abc //a
+		int	yCoordinate = y.toUpperCase().charAt(0)-65;  //abc //a
 		//hit
 		//miss
 		//invalid input
 
-		if (yCoordinate <0 || yCoordinate <= playerOneArray.length || x <= playerOneArray[yCoordinate].length || x < 0 || playerOneArray[yCoordinate][x]==2 || playerOneArray[yCoordinate][x]==1) //invalid input
+		if (yCoordinate <0 || yCoordinate >= playerOneArray.length || x >= playerOneArray[yCoordinate].length || x < 0 || playerOneArray[yCoordinate][x]==2 || playerOneArray[yCoordinate][x]==1) //invalid input
 		{
-			System.out.println(yCoordinate+" "+x);
+			//System.out.println(yCoordinate+" "+x);
 			return false;
 		}
 		
 		if (playerOneArray[yCoordinate][x]==3)
 		{
-			playerOneArray[yCoordinate][x]= 1;
+			playerOneArray[yCoordinate][x]= 2;
 			System.out.println("HIT!");
 			return true;
 		}
 		else
 		{
-			playerOneArray[yCoordinate][x]= 2;
+			playerOneArray[yCoordinate][x]= 1;
 			System.out.println("MISS!");
 			return true;
 		}
@@ -206,7 +214,7 @@ public class Battleship {
 			boolean is3=false;
 			for (int y=0; y<10; y++)
 			{
-				for (int x=0;x<10;x++)// work here.. make it so that player two doesn't automatically win.
+				for (int x=0;x<10;x++)
 				{
 					if (currentBoard[y][x]==3) 
 					{
@@ -278,7 +286,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("up"))
 		{
-			if(y=="A" || y=="a")
+			if(y.equalsIgnoreCase( "A"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -290,7 +298,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("down"))
 		{
-			if(y=="J" || y=="j")
+			if(y.equalsIgnoreCase( "j"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -360,7 +368,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("up"))
 		{
-			if(y=="A" || y=="a" || y=="B" || y=="b")
+			if(y.equalsIgnoreCase( "A") ||y.equalsIgnoreCase( "b"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -373,7 +381,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("down"))
 		{
-			if(y=="J" || y=="j" || y=="I" || y=="i")
+			if(y.equalsIgnoreCase( "j") ||y.equalsIgnoreCase( "i"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -445,7 +453,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("up"))
 		{
-			if(y=="A" || y=="a" || y=="B" || y=="b" || y=="C" || y=="c")
+			if(y.equalsIgnoreCase( "A")|| y.equalsIgnoreCase( "b") || y.equalsIgnoreCase( "c"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -459,7 +467,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("down"))
 		{
-			if(y=="J" || y=="j" || y=="I" || y=="i" || y=="H" || y=="h")
+			if(y.equalsIgnoreCase( "j") ||y.equalsIgnoreCase( "i")||y.equalsIgnoreCase( "h"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -480,7 +488,7 @@ public class Battleship {
 	}
 
 
-	public static boolean fivePiece(int [][]arrayBoard, Scanner input) //create invalid stuff
+	public static boolean fivePiece(int [][]arrayBoard, Scanner input) 
 	{
 
 		String y=input.next();
@@ -537,7 +545,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("up"))
 		{
-			if(y=="A" || y=="a" || y=="B" || y=="b" || y=="C" || y=="c" || y=="D" || y=="d")
+			if(y.equalsIgnoreCase( "A") || y.equalsIgnoreCase( "b") ||y.equalsIgnoreCase( "c") || y.equalsIgnoreCase( "d"))
 			{
 				System.out.println("Invalid");
 				return false;
@@ -552,7 +560,7 @@ public class Battleship {
 
 		else if (direction.equalsIgnoreCase("down"))
 		{
-			if(y=="J" || y=="j" || y=="I" || y=="i" || y=="H" || y=="h" || y=="G" || y=="g")
+			if(y.equalsIgnoreCase( "j")|| y.equalsIgnoreCase( "i")|| y.equalsIgnoreCase( "h") || y.equalsIgnoreCase( "g"))
 			{
 				System.out.println("Invalid");
 				return false;
