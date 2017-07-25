@@ -74,7 +74,7 @@ public class Battleship {
 			}
 		}
 
-		while (!(checkForWin(playerOneArray, playerTwoArray)==true && !(checkForTie()==true) ) )
+		while (!(checkForWin(playerOneArray, playerTwoArray)==true ) )
 		{
 			boolean bool = checkForOddOrEven(turn);
 			int[][] currentArray;
@@ -99,9 +99,17 @@ public class Battleship {
 			System.out.println("Where do you want to fire?");
 			String y = input.next();
 			int x = input.nextInt();
-
+			
 			playerMissile(y, x, enemyBoard);
+			if (playerMissile(y, x, enemyBoard)==false)
+			{
+				System.out.println("Invalid");
+				playerMissile(y, x, enemyBoard);
+			}
+			else 
+			{
 			turn++;
+			}
 		}
 
 
@@ -139,7 +147,7 @@ public class Battleship {
 
 	}
 
-	public static boolean playerMissile(String y, int x, int[][] playerOneArray)
+	public static boolean playerMissile(String y, int x, int[][] playerOneArray)// fix this!!!!!!
 	{
 
 		int	yCoordinate = y.charAt(0)-65;  //abc //a
@@ -147,12 +155,13 @@ public class Battleship {
 		//miss
 		//invalid input
 
-
-		if (yCoordinate <0 || yCoordinate >= playerOneArray.length || x >= playerOneArray[yCoordinate].length || x < 0 || playerOneArray[yCoordinate][x]==2 || playerOneArray[yCoordinate][x]==1) //invalid input
+		if (yCoordinate <0 || yCoordinate <= playerOneArray.length || x <= playerOneArray[yCoordinate].length || x < 0 || playerOneArray[yCoordinate][x]==2 || playerOneArray[yCoordinate][x]==1) //invalid input
 		{
+			System.out.println(yCoordinate+" "+x);
 			return false;
 		}
-		if (playerOneArray[yCoordinate][x]==0)
+		
+		if (playerOneArray[yCoordinate][x]==3)
 		{
 			playerOneArray[yCoordinate][x]= 1;
 			System.out.println("HIT!");
@@ -164,6 +173,7 @@ public class Battleship {
 			System.out.println("MISS!");
 			return true;
 		}
+		
 	}
 
 	public static boolean checkForOddOrEven(int turn)
@@ -192,25 +202,30 @@ public class Battleship {
 			{
 				currentBoard = playerTwoArray;
 			}
+			
+			boolean is3=false;
 			for (int y=0; y<10; y++)
 			{
-				for (int x=0;x<10;x++)// work here.. make it so that current board is in for loop
+				for (int x=0;x<10;x++)// work here.. make it so that player two doesn't automatically win.
 				{
-
+					if (currentBoard[y][x]==3) 
+					{
+						
+						is3=true;
+					}
 				}
-				if (currentBoard[10][10]!=3)
-			}
-			if (currentBoard[10][10]!=3)
-			{
-			}
-		}
-		return true;
-	}
 
-	public static boolean checkForTie()
-	{
+			}
+			if (!is3)
+			{
+				System.out.println("YOU WIN!");
+				return true;
+			}
+
+		}
 		return false;
 	}
+
 
 	public static boolean twoPiece(int [][]arrayBoard, Scanner input) 
 	{
