@@ -101,7 +101,6 @@ public class Battleship {
 			System.out.println("Where do you want to fire?");
 			String y = input.next();
 			int x = input.nextInt();
-			checkIfShipHasSunk(y, x);
 
 			boolean pm = playerMissile(y, x, enemyBoard);
 			if (pm==false)
@@ -113,10 +112,10 @@ public class Battleship {
 				System.out.println("Where do you want to fire?");
 				y = input.next();
 				x = input.nextInt();
-				playerMissile(y, x, enemyBoard);
-				
+				pm=playerMissile(y, x, enemyBoard);
+
 			}
-			else
+			if (pm==true)
 			{
 				turn++;
 			}
@@ -586,17 +585,10 @@ public class Battleship {
 			return false;
 		}
 	}
-	public static boolean checkIfShipHasSunk(String y, int x)// DO THIS!!!!
+	public static void checkIfShipHasSunk(String y, int x, int[][]currentArray )
 	{
-		int yCoordinate=y.toUpperCase().charAt(0)-65; 
 	
-		if ()
-	{
-		
-	}
-		
-		
-		
-		return false;
+
+
 	}
 }
