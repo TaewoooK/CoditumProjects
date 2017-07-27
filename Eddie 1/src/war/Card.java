@@ -23,7 +23,7 @@ public class Card {
 	
 	public String toString()
 	{
-		return suit;
+		return number+" of "+ suit;
 	}
 	
 }
