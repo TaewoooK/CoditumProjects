@@ -2,7 +2,6 @@ package war;
 
 import java.util.Random;
 
-// Try to print out whole deck
 public class Deck {
 
 	private Card[] cards;
@@ -35,7 +34,7 @@ public class Deck {
 
 			}
 		}
-		
+
 	}
 
 	public void printDeck()
@@ -45,20 +44,22 @@ public class Deck {
 			System.out.println(cards[y]);
 		}
 	}
-	
+
 	public void shuffle()
 	{
-		int c=0;
 		Random rand = new Random();
-		int a= rand.nextInt(52);
-		int b= rand.nextInt(52);
-		
-		
-		cards[c]=cards[a];// do this later
-		cards[a]=cards[b];
-		cards[b]=cards[c];
-		
+		for (int i=0;i<100;i++)
+		{
+			int a= rand.nextInt(52);
+			int b= rand.nextInt(52);
+
+
+			Card c =cards[a];
+			cards[a]=cards[b];
+			cards[b]=c;
+		}
+
 
 	}
-	
+
 }
