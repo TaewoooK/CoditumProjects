@@ -1,47 +1,52 @@
 package war;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
 
-	private Card[] cards;
+	private ArrayList<Card> cards;
 
 	public Deck()
 	{
-		int l=0;
-		cards= new Card[52];
+		cards= new ArrayList<Card>();
+
 		for (int i=0;i<4;i++)
 		{
 			for (int x=0;x<13;x++)
 			{
 				if (i==0)
 				{
-					cards[l] = new Card(x+1, "Hearts");				
+					cards.add(new Card(x+1, "Hearts") );				
 				}
 				if (i==1)
 				{
-					cards[l] = new Card(x+1, "Spades");
+					cards.add( new Card(x+1, "Spades") );
 				}
 				if (i==2)
 				{
-					cards[l] = new Card(x+1, "Diamonds");
+					cards.add(new Card(x+1, "Diamonds") );
 				}
 				if (i==3)
 				{
-					cards[l] = new Card(x+1, "Clovers");
+					cards.add( new Card(x+1, "Clovers") );
 				}
-				l++;
+
 
 			}
 		}
-
+		
 	}
+	public Deck(ArrayList<Card> c)
+		{
+			cards=c;
+		}
 
 	public void printDeck()
 	{
 		for(int y=0;y<52;y++)
 		{
-			System.out.println(cards[y]);
+			System.out.println(cards.get(y));
 		}
 	}
 
@@ -54,12 +59,18 @@ public class Deck {
 			int b= rand.nextInt(52);
 
 
-			Card c =cards[a];
-			cards[a]=cards[b];
-			cards[b]=c;
+			Card c =cards.get(a);
+			cards.set(a, cards.get(b) );
+			cards.set(b, c );
 		}
 
-
 	}
-
+	public void splitDeck(ArrayList<Card> c) //Split deck
+	{
+		for (int z=0;z<26;z++)
+		{
+			System.out.println();
+		}
+		
+	}
 }
