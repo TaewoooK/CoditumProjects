@@ -7,8 +7,9 @@ public class Game {
 	{
 		Deck d= new Deck();
 		d.shuffle();	
-		d.splitDeck(); //fix this
-		d.printDeck();
+		//d.splitDeck(); //fix this
+	//	d.printDeck();
+		d.placeCards();
 	}
 	
 

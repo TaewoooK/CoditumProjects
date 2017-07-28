@@ -2,6 +2,7 @@ package war;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Deck {
 
@@ -42,14 +43,14 @@ public class Deck {
 			cards=c;
 		}
 
-	public void printDeck()
+	/*public void printDeck()
 	{
 		for(int y=0;y<52;y++)
 		{
 			System.out.println(cards.get(y));
 		}
 	}
-
+*/
 	public void shuffle()
 	{
 		Random rand = new Random();
@@ -65,12 +66,29 @@ public class Deck {
 		}
 
 	}
-	public void splitDeck(ArrayList<Card> c) //Split deck
+	/*public void splitDeck() //Split deck
 	{
+		
 		for (int z=0;z<26;z++)
 		{
-			System.out.println();
+			System.out.println(cards.get(z));
 		}
+		
+	}*/
+	Scanner input=new Scanner(System.in);
+	
+	
+	public void placeCards()
+	{
+	for (int i=0;i<52;i++)
+	{
+		
+		System.out.println("Type NEXT to continue!");
+		String x= input.next();
+		System.out.println(cards.get(i));
+		System.out.println(cards.get(i+26) );
+
+	}
 		
 	}
 }
