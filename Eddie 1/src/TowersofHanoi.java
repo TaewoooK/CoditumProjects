@@ -70,7 +70,16 @@ public class TowersofHanoi {
 			}
 		}
 		
-	
+		for (int i=0;i<intarray.length;i++)
+		{
+			for (int y=0; y<3; y++)
+			{
+
+				System.out.print(intarray[i][y] + " ");
+			}
+			System.out.println();
+		}
+
 		
 		
 		
