@@ -5,18 +5,26 @@ public class Bubble_Sort {
 
 		int []array= {8, 6, 3, 10, 2, 55};
 
-		for (int i=1; i<array.length;i++)
+		boolean n=true;
+
+		while (n==true)
 		{
-			int a=i-1;
-			int b=i;
-			int temp=0;
-
-			if (array[b]<array[a])
+			n=false;
+			
+			for (int i=1; i<array.length;i++)
 			{
-				temp =array[a];
-				array[a]=array[b];
-				array[b]=temp;
+				int a=i-1;
+				int b=i;
+				int temp=0;
 
+				if (array[b]<array[a])
+				{
+					temp =array[a];
+					array[a]=array[b];
+					array[b]=temp;
+					n=true;
+				}
+			
 			}
 
 		}
@@ -25,16 +33,6 @@ public class Bubble_Sort {
 		{
 			System.out.print(array[h]+ " ");
 		}
-
-
-
-
-
-
-
-
-
-
 	}
 
 }
