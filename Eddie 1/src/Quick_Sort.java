@@ -27,32 +27,34 @@ public class Quick_Sort {
 	{
 		if (left < right)
 		{
-			int pivotIndex = partition (arr, 0, arr.length-1);
+			int pivotIndex = partition (arr, left, right);
 			sort(arr, left, pivotIndex);
-			sort(arr, pivotIndex, right);
+			sort(arr, pivotIndex+1, right);
 		}
 	}
 
 	public static int partition(int[] arr, int left, int right)
 	{
-		int j = left;
-		int i = left -1;
-		int p = right;
+		int i = left-1;
+		int p = arr[right];
 		
-		for (int x = 0; x < p; x++)
+		for (int j = left; j < right; j++)
 		{
-			j++;
-			if (arr[j] < arr[p])
+			if (arr[j] <= p)
 			{
 				i++;
 				int temp = arr[j];
-				arr[j] = arr [i];
+				arr[j] = arr[i];
 				arr[i] = temp;
 			}
-		}
+	     }
 		
-		p = (i + 1);
-		return p;
+		int temp = arr[i+1];
+		arr[i+1] = arr[p];
+		arr[p] = temp;
+		
+		
+		return (i+1);
 		
 	}
 
