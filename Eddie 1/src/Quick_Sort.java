@@ -28,7 +28,7 @@ public class Quick_Sort {
 		if (left < right)
 		{
 			int pivotIndex = partition (arr, left, right);
-			sort(arr, left, pivotIndex);
+			sort(arr, left, pivotIndex-1);
 			sort(arr, pivotIndex+1, right);
 		}
 	}
@@ -43,18 +43,18 @@ public class Quick_Sort {
 			if (arr[j] <= p)
 			{
 				i++;
-				int temp = arr[j];
-				arr[j] = arr[i];
-				arr[i] = temp;
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 			}
 	     }
 		
 		int temp = arr[i+1];
-		arr[i+1] = arr[p];
-		arr[p] = temp;
+		arr[i+1] = arr[right];
+		arr[right] = temp;
 		
 		
-		return (i+1);
+		return i+1;
 		
 	}
 

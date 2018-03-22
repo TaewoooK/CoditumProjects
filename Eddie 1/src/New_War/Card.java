@@ -2,37 +2,80 @@ package New_War;
 
 public class Card {
 
-	public final int CLUBS = 0;
-	public final int HEARTS = 1;
-	public final int SPADES = 2;
-	public final int DIAMONDS = 3;
-	public final int JACK = 11;
-	public final int QUEEN = 12;
-	public final int KING = 13;
-	public final int ACE = 14;
-	
 	private int value;
 	private int suit;
-	
-	public Card(int value, int suit) 
+
+	public Card(int suit, int value) 
 	{
 		this.value = value;
 		this.suit = suit;
 	}
-	
+
 	public int getValue()
 	{
 		return value;
 	}
-	
+
 	public int getSuit()
 	{
 		return suit;
 	}
-	
+
 	public String toString()
 	{
-		return value + " of" + suit;
+		if (suit == 0)
+		{
+			if (value == 11)
+				return "Jack of Clovers";
+			if (value == 12)
+				return "Queen of Clovers";
+			if (value == 13)
+				return "King of Clovers";
+			if (value == 14)
+				return "Ace of Clovers";
+			else
+				return value + " of Clovers";
+		}
+		if (suit == 1)
+		{
+			if (value == 11)
+				return "Jack of Hearts";
+			if (value == 12)
+				return "Queen of Hearts";
+			if (value == 13)
+				return "King of Hearts";
+			if (value == 14)
+				return "Ace of Hearts";
+			else
+				return value + " of Hearts";
+		}
+		if (suit == 2)
+		{
+			if (value == 11)
+				return "Jack of Diamonds";
+			if (value == 12)
+				return "Queen of Diamonds";
+			if (value == 13)
+				return "King of Diamonds";
+			if (value == 14)
+				return "Ace of Diamonds";
+			else
+				return value + " of Diamonds";
+		}
+		else
+		{
+			if (value == 11)
+				return "Jack of Spades";
+			if (value == 12)
+				return "Queen of Spades";
+			if (value == 13)
+				return "King of Spades";
+			if (value == 14)
+				return "Ace of Spades";
+			else
+				return value + " of Spades";
+		}
+
 	}
 
 }
