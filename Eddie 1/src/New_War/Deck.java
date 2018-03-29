@@ -17,7 +17,6 @@ public class Deck {
 				deck.add(new Card(i, j));
 			}
 		}
-
 	}
 
 	public Card dealCard()
